@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Only Fun - Home</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background-color: #f4f7fa;
+            scroll-behavior: smooth;
+        }
+
+        header {
+            background-color: rgba(34, 34, 34, 0.8);
+            padding: 1rem 2rem;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: background 0.5s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        header.scrolled {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .logo span {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .logo span:nth-child(2) {
+            color: #3AC4B2;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #3AC4B2;
+        }
+
+        .cta-button {
+            padding: 0.7rem 1.5rem;
+            color: #222;
+            background-color: #3AC4B2;
+            border: none;
+            cursor: pointer;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.4s, box-shadow 0.4s;
+        }
+
+        .cta-button:hover {
+            background-color: #36B1A2;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero {
+            text-align: center;
+            padding: 12rem 2rem;
+            background: linear-gradient(135deg, #3AC4B2, #2F3C4F);
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 100%;
+            background: url('https://i.imgur.com/1MH9wu2.jpeg') no-repeat center;
+            background-size: cover;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            animation: fadeInDown 1.2s ease;
+        }
+
+        .hero p {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1.2s ease;
+        }
+
+        .hero-button {
+            padding: 1rem 2rem;
+            margin-top: 2rem;
+            background-color: #fff;
+            color: #3AC4B2;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.4s, box-shadow 0.4s;
+        }
+
+        .hero-button:hover {
+            background-color: #36B1A2;
+            color: #fff;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        section {
+            padding: 6rem 2rem;
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            animation: fadeInUp 1s ease;
+        }
+
+        section h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: #3AC4B2;
+        }
+
+        .about, .token {
+            background-color: #fefefe;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin: 4rem auto;
+            padding: 3rem;
+            max-width: 1000px;
+        }
+
+        .about img, .token img {
+            width: 100%;
+            max-width: 500px;
+            margin: 2rem auto;
+            border-radius: 10px;
+        }
+
+        .roadmap, .tokenomics {
+            background-color: #f9f9f9;
+            padding: 3rem;
+            border-radius: 15px;
+            margin-top: 4rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .roadmap ul {
+            list-style: none;
+            text-align: left;
+            margin-top: 2rem;
+        }
+
+        .roadmap ul li {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .roadmap ul li::before {
+            content: "\2022";
+            color: #3AC4B2;
+            font-weight: bold;
+            display: inline-block;
+            width: 1rem;
+            margin-left: -1.5rem;
+        }
+
+        .join-button {
+            padding: 1rem 2rem;
+            background-color: #3AC4B2;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.4s, box-shadow 0.4s;
+        }
+
+        .join-button:hover {
+            background-color: #36B1A2;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        footer {
+            text-align: center;
+            padding: 4rem;
+            background-color: #222;
+            color: #fff;
+            font-size: 1.2rem;
+        }
+
+        footer p {
+            margin-bottom: 1rem;
+        }
+
+        footer a {
+            color: #3AC4B2;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: #fff;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="https://i.imgur.com/1MH9wu2.jpeg" alt="Only Fun Logo">
+                <span>Only<span style="color: #3AC4B2;">Fun</span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#token">The FUN Token</a></li>
+                <li><a href="#roadmap">Roadmap</a></li>
+                <li><a href="#tokenomics">Tokenomics</a></li>
+                <li><a href="#join">Join Us</a></li>
+            </ul>
+            <button class="cta-button">Get Started</button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Welcome to Only Fun</h1>
+        <p>The new platform where creators sell exclusive content with the power of the FUN Token.</p>
+        <a href="#join" class="hero-button">Join the Revolution</a>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <h2>What is Only Fun?</h2>
+        <p>Only Fun empowers content creators to reach their audience directly and securely. Using the FUN Token, you can buy, sell, and access exclusive audio and video content.</p>
+        <img src="https://via.placeholder.com/500x300" alt="About Only Fun">
+    </section>
+
+    <!-- Token Section -->
+    <section id="token" class="token">
+        <h2>The FUN Token</h2>
+        <p>Built on Solana, FUN Token enables fast and secure transactions between creators and fans. Join a decentralized economy where creators can thrive.</p>
+        <img src="https://via.placeholder.com/500x300" alt="The FUN Token">
+    </section>
+
+    <!-- Roadmap Section -->
+    <section id="roadmap" class="roadmap">
+        <h2>Roadmap</h2>
+        <ul>
+            <li><strong>Phase 1 (1-3 months):</strong> Token prototyping and creation. Set up community channels on Telegram and Discord.</li>
+            <li><strong>Phase 2 (3-6 months):</strong> Community building, onboarding initial creators, marketing.</li>
+            <li><strong>Phase 3 (6-12 months):</strong> Launch of MVP platform, integration of FUN Token for transactions.</li>
+            <li><strong>Phase 4 (12+ months):</strong> Expansion with advanced features, including smart contracts and NFTs.</li>
+        </ul>
+    </section>
+
+    <!-- Tokenomics Section -->
+    <section id="tokenomics" class="tokenomics">
+        <h2>Tokenomics</h2>
+        <canvas id="tokenomicsChart" width="400" height="400"></canvas>
+    </section>
+
+    <!-- Join Section -->
+    <section id="join" class="join">
+        <h2>Get Started with Only Fun</h2>
+        <p>Ready to join Only Fun? Create an account and start sharing exclusive content today.</p>
+        <button class="join-button" onclick="joinAlert()">Sign Up</button>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Only Fun. All rights reserved.</p>
+        <p>Visit our <a href="#">Privacy Policy</a> and <a href="#">Terms of Service</a>.</p>
+    </footer>
+
+    <!-- Chart.js and JavaScript for Tokenomics -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // JavaScript function for the Join button
+        function joinAlert() {
+            alert('Sign-up functionality coming soon!');
+        }
+
+        // Tokenomics Chart Data
+        const tokenomicsData = {
+            labels: ["Marketing", "Development", "Community Incentives", "Liquidity", "Team"],
+            datasets: [{
+                label: 'Token Distribution',
+                data: [20, 30, 25, 15, 10], // Percentage distribution
+                backgroundColor: [
+                    '#4CAF50',
+                    '#2196F3',
+                    '#FF9800',
+                    '#FF5722',
+                    '#9C27B0'
+                ]
+            }]
+        };
+
+        // Render Tokenomics Chart
+        window.onload = function() {
+            const ctx = document.getElementById('tokenomicsChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'pie',
+                data: tokenomicsData,
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(tooltipItem) {
+                                    return tooltipItem.label + ': ' + tooltipItem.raw + '%';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        };
+
+        // Scroll Event for Header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
