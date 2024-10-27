@@ -217,6 +217,20 @@
             margin-left: -1.5rem;
         }
 
+        .interactive-video {
+            margin-top: 4rem;
+            max-width: 800px;
+            margin: 4rem auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .interactive-video:hover {
+            transform: scale(1.02);
+        }
+
         .join-button {
             padding: 1rem 2rem;
             background-color: #3AC4B2;
@@ -363,6 +377,14 @@
         <h2>Get Started with Only Fun</h2>
         <p>Ready to join Only Fun? Create an account and start sharing exclusive content today.</p>
         <button class="join-button" onclick="joinAlert()">Sign Up</button>
+    </section>
+
+    <!-- Interactive Video Section -->
+    <section class="interactive-video">
+        <video controls width="100%" poster="https://via.placeholder.com/800x450">
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
     </section>
 
     <!-- Footer -->
