@@ -4,14 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Only Fun - Home</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <style>
-        /* Basic Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
             font-family: 'Poppins', sans-serif;
             color: #333;
@@ -30,7 +24,7 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            transition: background 0.5s ease;
+            transition: background 0.3s ease;
             backdrop-filter: blur(10px);
         }
 
@@ -72,7 +66,7 @@
             text-decoration: none;
             font-weight: 500;
             padding: 0.5rem 1rem;
-            transition: color 0.3s;
+            transition: color 0.2s;
         }
 
         .nav-links a:hover {
@@ -87,22 +81,23 @@
             cursor: pointer;
             border-radius: 30px;
             font-weight: bold;
-            transition: background 0.3s, transform 0.4s, box-shadow 0.4s;
+            transition: background 0.2s, transform 0.3s, box-shadow 0.3s;
         }
 
         .cta-button:hover {
             background-color: #36B1A2;
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
 
         .hero {
             text-align: center;
-            padding: 12rem 2rem;
+            padding: 6rem 2rem;
             background: linear-gradient(135deg, #3AC4B2, #2F3C4F);
             color: #fff;
             position: relative;
             overflow: hidden;
+            animation: fadeIn 0.8s ease-in-out;
         }
 
         .hero::before {
@@ -120,16 +115,16 @@
         }
 
         .hero h1 {
-            font-size: 5rem;
+            font-size: 4rem;
             font-weight: bold;
             margin-bottom: 1.5rem;
-            animation: fadeInDown 1.2s ease;
+            animation: fadeInDown 0.8s ease;
         }
 
         .hero p {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             margin-bottom: 2rem;
-            animation: fadeInUp 1.2s ease;
+            animation: fadeInUp 0.8s ease;
         }
 
         .hero-button {
@@ -140,28 +135,35 @@
             text-decoration: none;
             border-radius: 30px;
             font-weight: bold;
-            transition: background 0.3s, transform 0.4s, box-shadow 0.4s;
+            transition: background 0.2s, transform 0.3s, box-shadow 0.3s;
         }
 
         .hero-button:hover {
             background-color: #36B1A2;
             color: #fff;
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
 
         section {
-            padding: 6rem 2rem;
+            padding: 4rem 2rem;
             text-align: center;
             max-width: 1200px;
             margin: 0 auto;
-            animation: fadeInUp 1s ease;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        section:nth-child(even) {
+            animation-delay: 0.3s;
         }
 
         section h2 {
             font-size: 3rem;
             margin-bottom: 1.5rem;
             color: #3AC4B2;
+            animation: zoomIn 0.8s ease;
         }
 
         .about, .token {
@@ -171,6 +173,7 @@
             margin: 4rem auto;
             padding: 3rem;
             max-width: 1000px;
+            animation: fadeInUp 1s ease forwards;
         }
 
         .about img, .token img {
@@ -178,6 +181,8 @@
             max-width: 500px;
             margin: 2rem auto;
             border-radius: 10px;
+            animation: fadeIn 0.8s ease-in-out;
+            loading: lazy;
         }
 
         .roadmap, .tokenomics {
@@ -186,6 +191,7 @@
             border-radius: 15px;
             margin-top: 4rem;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 1s ease forwards;
         }
 
         .roadmap ul {
@@ -199,6 +205,7 @@
             margin-bottom: 1rem;
             padding-left: 1.5rem;
             position: relative;
+            animation: fadeInUp 0.8s ease forwards;
         }
 
         .roadmap ul li::before {
@@ -218,13 +225,13 @@
             cursor: pointer;
             border-radius: 30px;
             font-weight: bold;
-            transition: background 0.3s, transform 0.4s, box-shadow 0.4s;
+            transition: background 0.2s, transform 0.3s, box-shadow 0.3s;
         }
 
         .join-button:hover {
             background-color: #36B1A2;
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
 
         footer {
@@ -233,6 +240,7 @@
             background-color: #222;
             color: #fff;
             font-size: 1.2rem;
+            animation: fadeInUp 1s ease forwards;
         }
 
         footer p {
@@ -242,7 +250,7 @@
         footer a {
             color: #3AC4B2;
             text-decoration: none;
-            transition: color 0.3s;
+            transition: color 0.2s;
         }
 
         footer a:hover {
@@ -253,7 +261,7 @@
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(30px);
             }
             to {
                 opacity: 1;
@@ -264,11 +272,31 @@
         @keyframes fadeInDown {
             from {
                 opacity: 0;
-                transform: translateY(-20px);
+                transform: translateY(-30px);
             }
             to {
                 opacity: 1;
                 transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
             }
         }
     </style>
@@ -276,17 +304,17 @@
 <body>
     <!-- Navigation Bar -->
     <header>
-        <nav>
+        <nav class="container-fluid d-flex align-items-center justify-content-between">
             <div class="logo">
                 <img src="https://i.imgur.com/1MH9wu2.jpeg" alt="Only Fun Logo">
                 <span>Only<span style="color: #3AC4B2;">Fun</span></span>
             </div>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#token">The FUN Token</a></li>
-                <li><a href="#roadmap">Roadmap</a></li>
-                <li><a href="#tokenomics">Tokenomics</a></li>
-                <li><a href="#join">Join Us</a></li>
+            <ul class="nav-links d-flex align-items-center">
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#token" class="nav-link">The FUN Token</a></li>
+                <li><a href="#roadmap" class="nav-link">Roadmap</a></li>
+                <li><a href="#tokenomics" class="nav-link">Tokenomics</a></li>
+                <li><a href="#join" class="nav-link">Join Us</a></li>
             </ul>
             <button class="cta-button">Get Started</button>
         </nav>
@@ -303,14 +331,14 @@
     <section id="about" class="about">
         <h2>What is Only Fun?</h2>
         <p>Only Fun empowers content creators to reach their audience directly and securely. Using the FUN Token, you can buy, sell, and access exclusive audio and video content.</p>
-        <img src="https://via.placeholder.com/500x300" alt="About Only Fun">
+        <img src="https://via.placeholder.com/500x300" alt="About Only Fun" loading="lazy">
     </section>
 
     <!-- Token Section -->
     <section id="token" class="token">
         <h2>The FUN Token</h2>
         <p>Built on Solana, FUN Token enables fast and secure transactions between creators and fans. Join a decentralized economy where creators can thrive.</p>
-        <img src="https://via.placeholder.com/500x300" alt="The FUN Token">
+        <img src="https://via.placeholder.com/500x300" alt="The FUN Token" loading="lazy">
     </section>
 
     <!-- Roadmap Section -->
@@ -343,7 +371,8 @@
         <p>Visit our <a href="#">Privacy Policy</a> and <a href="#">Terms of Service</a>.</p>
     </footer>
 
-    <!-- Chart.js and JavaScript for Tokenomics -->
+    <!-- Bootstrap JS and Chart.js for Tokenomics -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         // JavaScript function for the Join button
